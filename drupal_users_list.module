@@ -1,0 +1,23 @@
+<?php
+
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+function cancel()
+{
+    \Drupal::messenger()->addMessage(t('Cancelado'));
+    $front = Url::fromRoute('drupal_users_list.list', [], ['absolute' => 'true']);
+    $response = new RedirectResponse($front->toString());
+    $response->send();
+}
+
+function drupal_users_list_theme($existing, $type, $theme, $path)
+{
+    return ['users_list' => [
+        'variables' => [
+            'user' => NULL,
+            'edit' => NULL,
+            'delete' => NULL,
+        ]
+    ]];
+}

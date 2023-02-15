@@ -1,0 +1,15 @@
+{% if user.name %}
+<h1>{{ user.name }}
+	{{user.surname}}</h1>
+<p>Email:
+	{{user.email}}</p>
+<p>Phone:
+	{{user.phone}}</p>
+<p>Date:
+	{{user.date|date('d/m/Y')}}</p>
+
+{{edit}}	{{delete}}
+    {% else %}
+        <strong>User not found</strong>
+{% endif %}
+

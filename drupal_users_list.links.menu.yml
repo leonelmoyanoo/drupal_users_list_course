@@ -1,0 +1,6 @@
+drupal_users_list.list:
+  title: 'Users list'
+  description: 'Show users in a list'
+  parent: system.menu.main
+  menu_name: main
+  route_name: drupal_users_list.list

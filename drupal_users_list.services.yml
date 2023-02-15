@@ -1,0 +1,6 @@
+services:
+  drupal_users_list.html_elements:
+    class: Drupal\drupal_users_list\Service\HtmlService
+  drupal_users_list.users_service:
+    class: Drupal\drupal_users_list\Service\UsersService
+    arguments: ['@database', '@cache.default']

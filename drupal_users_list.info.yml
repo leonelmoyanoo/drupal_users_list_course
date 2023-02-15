@@ -1,0 +1,6 @@
+name: Users List
+description: Custom module to create, update, delete and list Users
+package: Custom
+
+type: module
+core_version_requirement: ^9 || ^10

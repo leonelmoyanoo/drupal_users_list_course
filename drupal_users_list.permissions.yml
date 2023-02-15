@@ -1,0 +1,16 @@
+drupal_users_list add users:
+  title: 'Add users'
+  description: 'Add users to the list'
+  restrict access: TRUE
+drupal_users_list list users:
+  title: 'List users'
+  description: 'See the users list'
+  restrict access: TRUE
+drupal_users_list edit users:
+  title: 'Edit users'
+  description: 'Edit users'
+  restrict access: TRUE
+drupal_users_list delete users:
+  title: 'Delete users'
+  description: 'Delete user'
+  restrict access: TRUE

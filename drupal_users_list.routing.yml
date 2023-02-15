@@ -1,0 +1,38 @@
+drupal_users_list.add:
+  path: /users_list/add
+  defaults:
+    _title: "Add user"
+    _form: \Drupal\drupal_users_list\Form\addForm
+  requirements:
+    _permission: "drupal_users_list add users"
+
+drupal_users_list.edit:
+  path: /users_list/edit/{uid}
+  defaults:
+    _title: "Edit user"
+    _form: \Drupal\drupal_users_list\Form\editForm
+  requirements:
+    _permission: "drupal_users_list edit users"
+
+drupal_users_list.delete:
+  path: /users_list/delete/{uid}
+  defaults:
+    _title: "Confirm delete user"
+    _form: \Drupal\drupal_users_list\Form\deleteForm
+  requirements:
+    _permission: "drupal_users_list delete users"
+
+drupal_users_list.list:
+  path: /users_list
+  defaults:
+    _title: "List users"
+    _controller: '\Drupal\drupal_users_list\Controller\usersListController::list'
+  requirements:
+    _permission: "drupal_users_list list users"
+drupal_users_list.list_user:
+  path: /users_list/{uid}
+  defaults:
+    _title: "User"
+    _controller: '\Drupal\drupal_users_list\Controller\usersListController::listUser'
+  requirements:
+    _permission: "drupal_users_list list users"

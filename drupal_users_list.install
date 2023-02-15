@@ -1,0 +1,89 @@
+<?php
+
+function drupal_users_list_schema()
+{
+  $schema['my_users_data'] = [
+    'description' => 'Stores module users.',
+    'fields' => [
+      'uid' => [
+        'description' => 'The {users}.uid this record affects.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => 'User name.',
+        'type' => 'varchar',
+        'length' => 120,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'surname' => [
+        'description' => 'User surname.',
+        'type' => 'varchar',
+        'length' => 120,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'email' => [
+        'description' => 'User email.',
+        'type' => 'varchar',
+        'length' => 120,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'phone' => [
+        'description' => 'User phone.',
+        'type' => 'int',
+      ],
+      'date' => [
+        'description' => 'User date.',
+        'type' => 'varchar',
+        'mysql_type' => 'date',
+      ],
+    ],
+    'primary key' => [
+      'uid',
+      'email'
+    ],
+    'indexes' => [
+      'email' => [
+        'email',
+      ],
+    ],
+  ];
+  return $schema;
+}
+
+function drupal_users_list_install()
+{
+  $connection = \Drupal::database();
+
+  $values = [
+    [
+      'name' => 'Leonel',
+      'surname' => 'Moyano',
+      'email' => 'leonelmoyano1809@gmail.com',
+      'phone' => '12345678',
+      'date' => '2000-12-30',
+    ],
+    [
+      'name' => 'Marcos',
+      'surname' => 'Pena',
+      'email' => 'marcospena@gmail.com',
+      'phone' => '0303456',
+      'date' => '2020-09-18',
+    ] 
+  ];
+  $query = $connection->insert('my_users_data')
+    ->fields(['name', 'surname', 'email', 'phone', 'date']);
+  foreach ($values as $key => $value) {
+    $query->values($value);
+  }
+  try {
+    $result = $query->execute();
+  } catch (\Throwable $th) {
+    ksm($query);
+    dd($th);
+  }
+}

@@ -1,0 +1,9 @@
+drupal_users_list:
+  version: 1.x
+  css:
+    theme:
+      css/users_list.css: {}
+  js:
+    js/users_list.js: {}
+  dependencies:
+    - core\jquery
